@@ -1,10 +1,10 @@
 function insert(num) {
-    //if there is syntax error, return the function
+    //se houver erro de sintaxe, retorna a função
     if(SyntaxError) { 
         return
     }
     
-    // inserir um numero no display
+    //inserir um numero no display
     if(display.value.length < 20) {
       
         if(isNaN(num)) {
@@ -23,7 +23,7 @@ function insert(num) {
 }
 
 function clean() {
-    //if there is a syntax error, toggle the variable to false (reset)
+    //se houver um erro de sintaxe, alterne a variável para false (reset)
     SyntaxError = false
     //clear the display value 
     display.value = "0";
@@ -32,12 +32,12 @@ function clean() {
 
 function equal() {
     var exp = display.value
-    var flag = false //boolean variable to check condicionals 
+    var flag = false //variável booleana para verificar condicionais
 
     for(i = 0; i < exp.length; i++) {
         if(isNaN(exp[i]) && isNaN(exp[i+1])) {
             if(exp[i] != "+" && exp[i] != "-") {
-                //if there are two operators together, toggle syntaxerror to true
+               //se houver dois operadores juntos, alterne o erro de sintaxe para verdadeiro
                 display.value = "Syntax Error"
                 SyntaxError = true
             }
@@ -45,14 +45,14 @@ function equal() {
         }
     }
 
-    if(flag == false) { //if there is no  errors, calculate the expression normaly
+    if(flag == false) { //se não houver erros, calcula a expressão normalmente
         var answer = eval(exp)
 
         if(isFinite(answer)) {
             display.value = answer
         }
         else {
-            display.value = "Math Error" // if is infinity 
+            display.value = "Math Error" //se é infinito
             SyntaxError = true
         }
     }
@@ -61,7 +61,7 @@ function equal() {
 }
 
 function back() {
-    //if there is syntax error, return the function
+    //se houver erro de sintaxe, retorna a função
     if(SyntaxError) {
         return
     }
@@ -74,7 +74,7 @@ function back() {
 
 }
 
-//selecting display
+//selecionando exibição
 const display = document.querySelector('.display')
 //selecting all numbers
 const numbers = document.querySelectorAll('.number')
@@ -82,13 +82,13 @@ const numbers = document.querySelectorAll('.number')
 numbers.forEach( (button) => {
     button.addEventListener('click', calculate)
 })
-//selecting all operators
+//selecionando todos os operadores
 const operators = document.querySelectorAll('.operator')
 //adding event listener for each operator in "operators"
 operators.forEach( (button) => {
     button.addEventListener('click', calculate)
 })
-// adding event listener to the keyboard
+//adicionando ouvinte de evento ao teclado
 window.addEventListener('keypress', check)
 function check(key) {
     let keyValue = key.key
@@ -117,7 +117,7 @@ function check(key) {
     }
 }
 
-//boolean variable to check if there is syntax error
+//variável booleana para verificar se há erro de sintaxe
 var SyntaxError = false
 
 function calculate(event) {
